@@ -1,4 +1,5 @@
 
+using Restaurants.Application.Extensions;
 using Restaurants.Infrastructure.Extensions;
 using Restaurants.Infrastructure.Seeders;
 
@@ -12,6 +13,8 @@ namespace Restaurants.API
 
             // Add services to the container.
             builder.Services.AddInfrastructure(builder.Configuration); // Extentions
+            builder.Services.AddApplicaiton();
+
 
 
             builder.Services.AddControllers();
