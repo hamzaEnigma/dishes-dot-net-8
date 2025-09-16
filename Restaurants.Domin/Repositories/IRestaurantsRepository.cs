@@ -4,8 +4,10 @@ namespace Restaurants.Domin.Repositories
 {
     public interface IRestaurantsRepository
     {
-        Task<IEnumerable<Restaurant>> GetAll();
-        Task<Restaurant?> GetById(Guid id);
-        Task<Guid> Create(Restaurant restaurant);
+        Task<IEnumerable<Restaurant>> GetAllAsync();
+        Task<Restaurant?> GetByIdAsync(Guid id);
+        Task<Guid> CreateAsync(Restaurant restaurant);
+        Task DeleteAsync(Restaurant restaurant);
+        Task SaveChangesAsync();
     }
 }
