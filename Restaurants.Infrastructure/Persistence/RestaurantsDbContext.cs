@@ -1,12 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Restaurants.Domin.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Restaurants.Infrastructure.Persistence
 {
@@ -26,6 +20,11 @@ namespace Restaurants.Infrastructure.Persistence
 
             modelBuilder.Entity<Restaurant>()
                 .OwnsOne(temp => temp.Address);
+
+            modelBuilder.Entity<User>()
+            .HasMany(t => t.Restaurants)
+            .WithOne(t => t.Owner)
+            .HasForeignKey(t => t.OwnerId);
         }
     }
 }
