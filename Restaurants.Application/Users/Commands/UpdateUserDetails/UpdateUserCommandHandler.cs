@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using Restaurants.Domin.Entities;
 using Restaurants.Domin.Exceptions;
 
-namespace Restaurants.Application.Users.Commands
+namespace Restaurants.Application.Users.Commands.UpdateUserDetails
 {
     public class UpdateUserCommandHandler(ILogger<UpdateUserCommandHandler> _logger, IUserContext _userContext, IUserStore<User> _userStore)
         : IRequestHandler<UpdateUserCommand>
@@ -20,7 +20,7 @@ namespace Restaurants.Application.Users.Commands
                 throw new NotFoundException(nameof(dbUser), user!.id);
             }
             dbUser.DateOfBirth = request.DateOfBirth;
-            dbUser.Nationality = request.Nationality;  
+            dbUser.Nationality = request.Nationality;
 
             await _userStore.UpdateAsync(dbUser, cancellationToken);
         }

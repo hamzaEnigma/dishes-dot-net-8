@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Users\Commands\AssignUserRole\" />
     <Folder Include="Validators\" />
   </ItemGroup>
 
