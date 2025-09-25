@@ -9,5 +9,6 @@ namespace Restaurants.Domin.Repositories
         Task<Guid> CreateAsync(Restaurant restaurant);
         Task DeleteAsync(Restaurant restaurant);
         Task SaveChangesAsync();
+        Task<IEnumerable<Restaurant>> GetAllMatching(string? searchPhrase);
     }
 }

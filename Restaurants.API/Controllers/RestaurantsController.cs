@@ -14,19 +14,22 @@ namespace Restaurants.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RestaurantsController(
         IValidator<CreateRestaurantCommand> _validatorCreateCommand,
         IValidator<UpdateRestaurantCommand> _validatorUpdateCommand,
         IMediator _mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll([FromQuery] GetAllRestaurantsQuery getAllRestaurantsQuery)
         {
-            var resturants = await _mediator.Send(new GetAllRestaurantsQuery());
+            var resturants = await _mediator.Send(getAllRestaurantsQuery);
             return Ok(resturants);
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<RestaurantDto>> GetById([FromRoute] Guid id)
         {
             var restaurant = await _mediator.Send(new GetRestaurantByIdQuery(id));

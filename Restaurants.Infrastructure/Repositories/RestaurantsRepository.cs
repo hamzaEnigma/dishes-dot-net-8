@@ -34,5 +34,17 @@ namespace Restaurants.Infrastructure.Repositories
         {
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<Restaurant>> GetAllMatching(string? searchPhrase)
+        {   
+           string normalizedSearch = searchPhrase?.Trim().ToLower() ?? string.Empty;
+            return await _dbContext.Restaurants
+               .Where(r => string.IsNullOrEmpty(normalizedSearch) ||
+                           r.Name.ToLower().Contains(normalizedSearch) ||
+                           r.Description.ToLower().Contains(normalizedSearch) ||
+                           r.Category.ToLower().Contains(normalizedSearch))
+               .ToListAsync();
+        }
+         
     }
 }

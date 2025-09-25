@@ -13,8 +13,8 @@ namespace Restaurants.Application.Restaurants.Queries.GetAllRestaurants
     {
         public async Task<IEnumerable<RestaurantDto>> Handle(GetAllRestaurantsQuery request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Getting all restaurants");
-            var restaurants = await _restoRepo.GetAllAsync();
+            _logger.LogInformation("Getting all restaurants with matching phrase : {phrase}", request.searchPhrase);
+            var restaurants = await _restoRepo.GetAllMatching(request.searchPhrase);
             var restaurantsDto = _mapper.Map<IEnumerable<RestaurantDto>>(restaurants);
             return restaurantsDto;
 
