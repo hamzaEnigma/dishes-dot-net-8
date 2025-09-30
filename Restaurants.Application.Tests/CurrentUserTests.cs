@@ -15,12 +15,11 @@ namespace Restaurants.Application.Tests
         {
             //arrange
 
-            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner]);
+            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner],null,null);
 
 
             //act
             var result = currentUser.IsInRole(roleName);
-
 
 
             //assert
@@ -34,7 +33,7 @@ namespace Restaurants.Application.Tests
         {
             //arrange
 
-            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin]);
+            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin],null,null);
 
             //act
 
@@ -51,7 +50,7 @@ namespace Restaurants.Application.Tests
         {
             //arrange
 
-            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner]);
+            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner],null,null);
 
             //act
 
@@ -60,6 +59,22 @@ namespace Restaurants.Application.Tests
             //assert
 
             result.Should().BeFalse();
+        }
+
+        [Fact()]
+        public void IsNationalityGerman_ShouldResturnGerman()
+        {
+            //arrange
+
+            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner], null, "German");
+
+            //act
+
+            var result = currentUser.Nationality;
+
+            //assert
+
+            result.Should().Be("German");
         }
 
     }
