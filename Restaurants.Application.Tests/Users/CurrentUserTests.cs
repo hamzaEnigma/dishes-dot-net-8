@@ -3,7 +3,7 @@ using Restaurants.Application.Users;
 using Restaurants.Domin;
 using Xunit;
 
-namespace Restaurants.Application.Tests
+namespace Restaurants.Application.Tests.Users
 {
     public class CurrentUserTests
     {
@@ -15,7 +15,7 @@ namespace Restaurants.Application.Tests
         {
             //arrange
 
-            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner],null,null);
+            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner], null, null);
 
 
             //act
@@ -33,7 +33,7 @@ namespace Restaurants.Application.Tests
         {
             //arrange
 
-            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin],null,null);
+            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin], null, null);
 
             //act
 
@@ -50,7 +50,7 @@ namespace Restaurants.Application.Tests
         {
             //arrange
 
-            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner],null,null);
+            var currentUser = new CurrentUser("1", "email", [UserRoles.User, UserRoles.Admin, UserRoles.Owner], null, null);
 
             //act
 
