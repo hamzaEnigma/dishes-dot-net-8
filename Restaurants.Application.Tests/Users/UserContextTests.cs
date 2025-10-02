@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Moq;
 using Restaurants.Application.Users;
 using Restaurants.Domin;
-using Restaurants.Domin.Entities;
 using System.Security.Claims;
 using Xunit;
 
